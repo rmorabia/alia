@@ -1,12 +1,22 @@
+// Global variables because I don't understand how to handle this without making everything a nested hellscape
+
 let date
+let httpRequest
+
+// Initial http request
 
 ;(function ajaxCall () {
-  getDate()
-  const httpRequest = new XMLHttpRequest()
+  httpRequest = new XMLHttpRequest()
   httpRequest.open('GET', 'https://api.themoviedb.org/3/person/1108120/movie_credits?api_key=f8e4d97cbdd172b25e1dd31546263dcd&language=en-US')
   httpRequest.send()
-  httpRequest.onreadystatechange = function () {
+  httpRequest.onreadystatechange = getReleaseDate
+})()
+
+// App functionality
+
+function getReleaseDate () {
     if (httpRequest.readyState === XMLHttpRequest.DONE) {
+      getDate()
       let credits = JSON.parse(httpRequest.response)
       let releaseDate = []
       for (let i = 0; i < credits.cast.length; i++) {
@@ -16,15 +26,14 @@ let date
         return !(i === '')
       })
       releaseDate = releaseDate.sort()
-      let release = releaseDate.find(red)
+      let release = releaseDate.find(nextReleaseDate)
       if (date < release) {
-        document.write("Alia's next movie is on " + release + '!')
+        console.log("Alia's next movie is on " + release + '!')
       }
     }
   }
-})()
 
-function red (element) {
+function nextReleaseDate (element) {
   return element > date
 }
 
