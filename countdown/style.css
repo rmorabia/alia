@@ -8,7 +8,7 @@
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
 
-html {
+ html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
 }
@@ -351,8 +351,6 @@ Background Image
 */
 
 body {
-  background-color: yellow;
-  background: url(alia.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center; 
@@ -370,65 +368,74 @@ html {
 }
 
 body {
-  padding: 0 5%;
-  
-}
+  font-family: 'Arimo', 'Helveltica', sans-serif;
+  color: white;
+  text-shadow: 0 1px 1px black;
 
-.container {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  height: 100vh;
+  align-items: center;
+  /* height: 100%; */
 }
 
-.flex-left {
-  flex: 1;
-}
-
-.flex-right {
-  flex: 1;
+.text-info {
+  width: 50%;
+  padding: 0 3%;
+  border: 1px solid #FFF;
+  background-color: rgba(0,0,0, .3);
 }
 
 /* 
 ===
-Headings
+Typography
 ===
 */
 
 h1 {
   color: #448FCE;
   font-size: 4em;
-  font-family: 'Unica One', cursive;
-  text-shadow: 0 2px 2px white;
+  text-shadow: 0 1px 1px white;
+  letter-spacing: 0.0425em;
 }
 
-/*
+h2 {
+  font-size: 3em;
+}
+
+p {
+  font-size: 1.5em;
+}
+
+a {
+  color: #FFF;
+}
+
+/* 
 ===
-Buttons
+Description
 ===
 */ 
 
-button {
-  font-family: 'Nunito Sans', sans-serif;
-  border: 2px solid red;
-  background-color: rgba(0, 0, 0, 0);
-  box-shadow: 2px 2px red;
-  padding: 10px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1025em;
-  color: red;
-  font-size: 20px;
+[data-description] {
+  font-style: italic;
+  padding: 1%;
+  border-left: 4px solid #448FCE;
+  background-color: rgba(255, 255, 255, .1)
 }
 
-button:active,
-a:active {
-  box-shadow: 0 0;
-  background-color: red;
-  color: #EBE860;
-}
-
-button:hover,
-a:hover {
-  text-decoration: underline;
-}
+ .text-info .video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px; height: 0; overflow: hidden;
+  } 
+  
+.text-info .video-container iframe,
+.text-info .video-container object,
+.text-info .video-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  }
