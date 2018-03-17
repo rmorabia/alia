@@ -8,9 +8,11 @@
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
 
- html {
-  line-height: 1.15; /* 1 */
-  -webkit-text-size-adjust: 100%; /* 2 */
+html {
+  line-height: 1.15;
+  /* 1 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
 }
 
 /* Sections
@@ -43,9 +45,12 @@ h1 {
  */
 
 hr {
-  box-sizing: content-box; /* 1 */
-  height: 0; /* 1 */
-  overflow: visible; /* 2 */
+  box-sizing: content-box;
+  /* 1 */
+  height: 0;
+  /* 1 */
+  overflow: visible;
+  /* 2 */
 }
 
 /**
@@ -54,8 +59,10 @@ hr {
  */
 
 pre {
-  font-family: monospace, monospace; /* 1 */
-  font-size: 1em; /* 2 */
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */
 }
 
 /* Text-level semantics
@@ -75,9 +82,12 @@ a {
  */
 
 abbr[title] {
-  border-bottom: none; /* 1 */
-  text-decoration: underline; /* 2 */
-  text-decoration: underline dotted; /* 2 */
+  border-bottom: none;
+  /* 1 */
+  text-decoration: underline;
+  /* 2 */
+  text-decoration: underline dotted;
+  /* 2 */
 }
 
 /**
@@ -97,8 +107,10 @@ strong {
 code,
 kbd,
 samp {
-  font-family: monospace, monospace; /* 1 */
-  font-size: 1em; /* 2 */
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */
 }
 
 /**
@@ -154,10 +166,14 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: inherit; /* 1 */
-  font-size: 100%; /* 1 */
-  line-height: 1.15; /* 1 */
-  margin: 0; /* 2 */
+  font-family: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 1 */
+  line-height: 1.15;
+  /* 1 */
+  margin: 0;
+  /* 2 */
 }
 
 /**
@@ -166,7 +182,8 @@ textarea {
  */
 
 button,
-input { /* 1 */
+input {
+  /* 1 */
   overflow: visible;
 }
 
@@ -176,7 +193,8 @@ input { /* 1 */
  */
 
 button,
-select { /* 1 */
+select {
+  /* 1 */
   text-transform: none;
 }
 
@@ -230,12 +248,18 @@ fieldset {
  */
 
 legend {
-  box-sizing: border-box; /* 1 */
-  color: inherit; /* 2 */
-  display: table; /* 1 */
-  max-width: 100%; /* 1 */
-  padding: 0; /* 3 */
-  white-space: normal; /* 1 */
+  box-sizing: border-box;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  display: table;
+  /* 1 */
+  max-width: 100%;
+  /* 1 */
+  padding: 0;
+  /* 3 */
+  white-space: normal;
+  /* 1 */
 }
 
 /**
@@ -261,8 +285,10 @@ textarea {
 
 [type="checkbox"],
 [type="radio"] {
-  box-sizing: border-box; /* 1 */
-  padding: 0; /* 2 */
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
 }
 
 /**
@@ -280,8 +306,10 @@ textarea {
  */
 
 [type="search"] {
-  -webkit-appearance: textfield; /* 1 */
-  outline-offset: -2px; /* 2 */
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */
 }
 
 /**
@@ -298,8 +326,10 @@ textarea {
  */
 
 ::-webkit-file-upload-button {
-  -webkit-appearance: button; /* 1 */
-  font: inherit; /* 2 */
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */
 }
 
 /* Interactive
@@ -353,7 +383,7 @@ Background Image
 body {
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center; 
+  background-position: center;
   background-attachment: fixed;
 }
 
@@ -371,19 +401,18 @@ body {
   font-family: 'Arimo', 'Helveltica', sans-serif;
   color: white;
   text-shadow: 0 1px 1px black;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* height: 100%; */
+  min-height: 100vh;
 }
 
 .text-info {
   width: 50%;
   padding: 0 3%;
   border: 1px solid #FFF;
-  background-color: rgba(0,0,0, .3);
+  background-color: rgba(0, 0, 0, .3);
 }
 
 /* 
@@ -415,7 +444,7 @@ a {
 ===
 Description
 ===
-*/ 
+*/
 
 [data-description] {
   font-style: italic;
@@ -424,12 +453,19 @@ Description
   background-color: rgba(255, 255, 255, .1)
 }
 
- .text-info .video-container {
+/*
+===
+YouTube
+*/
+
+.text-info .video-container {
   position: relative;
   padding-bottom: 56.25%;
-  padding-top: 30px; height: 0; overflow: hidden;
-  } 
-  
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+}
+
 .text-info .video-container iframe,
 .text-info .video-container object,
 .text-info .video-container embed {
@@ -438,4 +474,90 @@ Description
   left: 0;
   width: 100%;
   height: 100%;
-  }
+}
+
+/*
+===
+Footer
+===
+*/
+
+/*
+===
+Footer
+===
+*/
+
+footer {
+  display: flex;
+  color: #FFF;
+  text-shadow: 0 1px 1px #000;
+  position: fixed;
+  bottom: 0px;
+  height: 80px;
+  width: 270px;
+  right: 0px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 5px;
+}
+
+footer a {
+  color: #FFF;
+}
+
+img {
+  display: inline-block;
+  position: relative;
+  max-width: 100%;
+  width: auto;
+}
+
+.footer-right {
+  flex: 5;
+  padding: 0 2%;
+}
+
+.footer-left {
+  flex: 2;
+}
+
+footer a:hover {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+small {
+  font-size: 11px;
+}
+
+/*
+===
+Countdown
+===
+*/
+
+[data-clock] {
+  display: inline-block;
+  text-align: center;
+  padding: 10px;
+}
+
+[data-clock] > div {
+  display: inline-block;
+  background: rgba(68, 143, 206, .6);
+  padding: 10px;
+  margin-right: 5px;
+  border: 1px solid #FFF;
+  border-radius: 5px;
+}
+
+[data-clock] > div > span {
+  font-size: 2em;
+  padding: 5px 10px;
+  background: rgba(0, 0, 0, .1);
+  border-radius: 5px;
+  border: 1px solid rgba(68, 143, 206, .7)
+}
+
+[data-clock] > div > div {
+  padding-top: 10px;
+}

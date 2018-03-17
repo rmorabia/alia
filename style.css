@@ -8,7 +8,7 @@
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
 
-html {
+ html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
 }
@@ -352,7 +352,7 @@ Background Image
 
 body {
   background-color: yellow;
-  background: url(alia.png);
+  background: url(alia.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center; 
@@ -371,14 +371,14 @@ html {
 
 body {
   padding: 0 5%;
-  
+  font-family: 'Nunito Sans', sans-serif;
 }
 
 .container {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .flex-left {
@@ -409,7 +409,6 @@ Buttons
 */ 
 
 button {
-  font-family: 'Nunito Sans', sans-serif;
   border: 2px solid red;
   background-color: rgba(0, 0, 0, 0);
   box-shadow: 2px 2px red;
@@ -431,4 +430,67 @@ a:active {
 button:hover,
 a:hover {
   text-decoration: underline;
+}
+
+/*
+===
+Footer
+===
+*/
+
+footer {
+  display: flex;
+  color: #FFF;
+  text-shadow: 0 1px 1px #000;
+  position: fixed;
+  bottom: 0px;
+  height: 80px;
+  width: 270px;
+  right: 0px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 5px;
+}
+
+footer a {
+  color: #FFF;
+}
+
+img {
+  display: inline-block;
+  position: relative;
+  max-width: 100%;
+  width: auto;
+}
+
+.footer-right {
+  flex: 5;
+  padding: 0 2%;
+}
+
+.footer-left {
+  flex: 2;
+}
+
+footer a:hover {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+small {
+  font-size: 11px;
+}
+
+/*
+===
+Mobile
+===
+*/
+
+@media only screen and (max-width: 700px) {
+    h1 {
+        font-size: 2.5em;
+    }
+  
+  footer {
+    height: 75px;
+  }
 }

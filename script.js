@@ -1,6 +1,7 @@
 // Global variables because I don't understand how to handle this without making everything a nested hellscape
 
 let date
+let release
 let aliaRequest
 let credits
 let releaseIndex
@@ -8,7 +9,7 @@ let movieRequest
 let movieCredits
 let movieVideo
 
-// Just a little CSS-related function
+// Make the container not show white space underneath
 
 window.onresize = () => {
   location.reload()
@@ -24,9 +25,9 @@ window.onresize = () => {
   aliaRequest.onreadystatechange = getReleaseDate
 })()
 
-// App functionality
+// Date-related functions
 
-function getReleaseDate () {
+function getReleaseDate() {
   if (aliaRequest.readyState === XMLHttpRequest.DONE) {
     getDate()
     credits = JSON.parse(aliaRequest.response)
@@ -38,17 +39,20 @@ function getReleaseDate () {
       return !(i === '')
     })
     releaseDate = releaseDate.sort()
-    let release = releaseDate.find(nextReleaseDate)
+    release = releaseDate.find(nextReleaseDate)
     releaseIndex = releaseDate.findIndex(nextReleaseDate) + 1
     if (date < release) {
-      console.log("Alia's next movie is on " + release + '!')
-      console.log(credits)
       movieAjaxCall()
+    } else {
+      document.getElementById('stylesheet').href = '/style.css'
+      document.querySelector('section').innerHTML = '<div class="container"> <div class="flex-left"> <h1> Alia Bhatt has no movies with a release date announced coming up!</h1></div> <div class="flex-right"></div></div>'
     }
+    countdown()
+    setInterval(countdown, 1000)
   }
 }
 
-function getDate () {
+function getDate() {
   let getDate = new Date()
   let year = getDate.getFullYear()
   let month = 1 + getDate.getMonth()
@@ -58,13 +62,16 @@ function getDate () {
   date = (year + '-' + month + '-' + monthDate)
 }
 
-function nextReleaseDate (element) {
+// Used above for Array.find
+
+function nextReleaseDate(element) {
   return element > date
 }
 
-function movieAjaxCall () {
-  console.log(credits.cast[releaseIndex].id)
-  const movieID = credits.cast[2].id
+// Get & print movie data after the above functions run
+
+function movieAjaxCall() {
+  const movieID = credits.cast[releaseIndex].id
   movieRequest = new XMLHttpRequest()
   movieRequest.open('GET', ('https://api.themoviedb.org/3/movie/' + movieID + '?api_key=f8e4d97cbdd172b25e1dd31546263dcd&language=en-US'))
   movieRequest.send()
@@ -81,23 +88,21 @@ function movieAjaxCall () {
   movieVideo.onreadystatechange = getMovieVideo
 }
 
-function getMovieInfo () {
+function getMovieInfo() {
   if (movieRequest.readyState === XMLHttpRequest.DONE) {
     let movieInfo = JSON.parse(movieRequest.response)
-    console.log(movieInfo)
     document.body.style.backgroundImage = 'url(https://image.tmdb.org/t/p/w533_and_h300_bestv2' + movieInfo.backdrop_path + ')'
     document.querySelectorAll('[data-title]').forEach(function (i) {
       i.textContent = movieInfo.title
     })
     document.querySelector('[data-description]').textContent = movieInfo.overview
-    document.querySelector('[data-link]').innerHTML = '<a href="http://imdb.com/title/' + movieInfo.imdb_id + '">IMDB</a>'
+    document.querySelector('[data-link]').innerHTML = '<a href="http://imdb.com/title/' + movieInfo.imdb_id + '">IMDb</a>'
   }
 }
 
-function getMovieCredits () {
+function getMovieCredits() {
   if (movieCredits.readyState === XMLHttpRequest.DONE) {
     let creditsInfo = JSON.parse(movieCredits.response)
-    console.log(creditsInfo)
     document.querySelector('[data-director]').textContent = creditsInfo.crew[0].name
 
     let cast = creditsInfo.cast
@@ -105,24 +110,39 @@ function getMovieCredits () {
       return element.name === 'Alia Bhatt'
     })
     cast.splice(aliaIndex, 1)
-    console.log(cast)
     document.querySelector('[data-stars').textContent = cast[0].name + ', ' + cast[1].name + ', and ' + cast[2].name
   }
 }
 
-function getMovieVideo () {
+function getMovieVideo() {
   if (movieVideo.readyState === XMLHttpRequest.DONE) {
     const videoObject = JSON.parse(movieVideo.response)
     const videoInfo = videoObject.results
-    console.log(videoInfo)
     if (videoInfo[0] !== undefined) {
       const trailer = document.createElement('p')
-      const trailerText = document.createTextNode('<a href="http://youtube.com/watch?v=' + videoInfo[0].key + '">Watch the trailer on YouTube.</a>')
+      const trailerText = document.createTextNode('Watch the trailer on YouTube below:')
       trailer.appendChild(trailerText)
-      console.log(trailer)
-      document.querySelector('div').parentElement.insertBefore(trailer, document.querySelector('div'))
-      document.body.style.removeProperty('height');
-      document.querySelector('div').innerHTML = '<iframe src="https://www.youtube.com/embed/z9Ul9ccDOqE" frameborder="0" allowfullscreen</iframe>'
+      document.querySelector('#youtube').parentElement.insertBefore(trailer, document.querySelector('#youtube'))
+      document.querySelector('#youtube').classList.add('video-container')
+      document.querySelector('#youtube').innerHTML = '<iframe src="https://www.youtube.com/embed/' + videoInfo[0].key + '" frameborder="0" allowfullscreen</iframe>'
     }
   }
+}
+
+// Countdown timer
+
+function countdown() {
+  const t = Date.parse(release) - Date.parse(new Date())
+  const days = Math.floor(t / (1000 * 60 * 60 * 24))
+  const hours = Math.floor(t / (1000 * 60 * 60) % 24)
+  const minutes = Math.floor((t / 1000 / 60) % 60)
+  const seconds = Math.floor((t / 1000) % 60)
+
+  function printClock() {
+    document.querySelector('[data-days]').textContent = ('0' + days).slice(-2)
+    document.querySelector('[data-hours]').textContent = ('0' + hours).slice(-2)
+    document.querySelector('[data-minutes]').textContent = ('0' + minutes).slice(-2)
+    document.querySelector('[data-seconds]').textContent = ('0' + seconds).slice(-2)
+  }
+  printClock()
 }
