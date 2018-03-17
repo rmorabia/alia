@@ -9,12 +9,6 @@ let movieRequest
 let movieCredits
 let movieVideo
 
-// Make the container not show white space underneath
-
-window.onresize = () => {
-  location.reload()
-}
-
 // Initial http request
 
 ;

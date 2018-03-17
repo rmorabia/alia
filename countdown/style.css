@@ -395,6 +395,7 @@ Page Layout
 
 html {
   height: 100%;
+  width: 100%;
 }
 
 body {
@@ -482,13 +483,8 @@ Footer
 ===
 */
 
-/*
-===
-Footer
-===
-*/
-
 footer {
+  font-family: 'Nunito Sans';
   display: flex;
   color: #FFF;
   text-shadow: 0 1px 1px #000;
@@ -541,7 +537,7 @@ Countdown
   padding: 10px;
 }
 
-[data-clock] > div {
+[data-clock]>div {
   display: inline-block;
   background: rgba(68, 143, 206, .6);
   padding: 10px;
@@ -550,7 +546,7 @@ Countdown
   border-radius: 5px;
 }
 
-[data-clock] > div > span {
+[data-clock]>div>span {
   font-size: 2em;
   padding: 5px 10px;
   background: rgba(0, 0, 0, .1);
@@ -558,6 +554,40 @@ Countdown
   border: 1px solid rgba(68, 143, 206, .7)
 }
 
-[data-clock] > div > div {
+[data-clock]>div>div {
   padding-top: 10px;
+}
+
+/*
+===
+Mobile
+===
+*/
+
+@media (max-width: 799px) {
+  .text-info {
+    width: auto;
+    border: 0;
+  }
+  h1 {
+    font-size: 2.5em;
+  }
+  h2 {
+    font-size: 1.75em
+  }
+  [data-clock] {
+    padding: 5px;
+  }
+  [data-clock]>div {
+    margin-top: 20px;
+  }
+  [data-clock]>div>span {
+    font-size: 1.5em;
+  }
+}
+
+@media (max-width: 399px) {
+  [data-clock]>div>span {
+    font-size: 1.25em
+  }
 }
