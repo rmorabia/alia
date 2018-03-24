@@ -4,7 +4,7 @@ This app counts down to Alia Bhatt's next movie release.
 
 ![](alia.gif)
 
-## Technologies Used:
+## Technologies
 
 * JavaScript
 * ES6 Promises
@@ -24,6 +24,14 @@ Both the CSS and the JavaScript are framework-free.
 * Mobile-responsive
 * If a YouTube trailer exists, display it
 * Error catching if the request fails or if the request returns nothing
+
+## Instructions for Running Locally
+
+Clone to your computer using:
+
+`git clone https://github.com/rmorabia/alia.git`
+
+Then, open `index.html` to access the site.
 
 ## Special Thanks
 
