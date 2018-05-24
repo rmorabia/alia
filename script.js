@@ -21,32 +21,32 @@ function get (url) {
 get('https://api.themoviedb.org/3/person/1108120/movie_credits?api_key=f8e4d97cbdd172b25e1dd31546263dcd&language=en-US')
   .then((response) => {
     let credits = JSON.parse(response)
-    let unorderedReleaseDate = credits.cast.map((i) => {
+    let rawReleaseDate = credits.cast.map((i) => {
       return i.release_date
     })
-    let releaseDate = unorderedReleaseDate.filter((i) => {
+    let releaseDate = rawReleaseDate.filter((i) => {
       return !(i === '')
     })
     return {
       releaseDate: releaseDate.sort(),
       credits: credits.cast,
-      unorderedReleaseDate: unorderedReleaseDate
+      rawReleaseDate: rawReleaseDate
     }
   })
   // Compare releaseDate array to current date
   .then((Object) => {
     const date = getDate()
-    const compareReleaseDate = Object.releaseDate.find((element) => {
+    const release = Object.releaseDate.find((element) => {
       return element > date
     })
-    const releaseIndex = Object.unorderedReleaseDate.findIndex((element) => {
-      return element === compareReleaseDate
+    const releaseIndex = Object.rawReleaseDate.findIndex((element) => {
+      return element === release
     })
-    if (date < compareReleaseDate) {
+    if (date < release) {
       // Run countdown timer + Run further information calls
-      countdown(compareReleaseDate)
+      countdown(release)
       setInterval(() => {
-        countdown(compareReleaseDate)
+        countdown(release)
       }, 1000)
       return Object.credits[releaseIndex].id
     } else {
@@ -122,7 +122,7 @@ function countdown (release) {
   const seconds = Math.floor((t / 1000) % 60)
 
   function printClock () {
-    document.querySelector('[data-days]').textContent = ('0' + days).slice(-2)
+    document.querySelector('[data-days]').textContent = ('0' + days).slice(-3)
     document.querySelector('[data-hours]').textContent = ('0' + hours).slice(-2)
     document.querySelector('[data-minutes]').textContent = ('0' + minutes).slice(-2)
     document.querySelector('[data-seconds]').textContent = ('0' + seconds).slice(-2)

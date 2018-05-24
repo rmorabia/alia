@@ -1,6 +1,8 @@
 # When is Alia Bhatt's next movie coming out?
 
-This app counts down to Alia Bhatt's next movie release.
+This app counts down to Alia Bhatt's next movie release. 
+
+![Is the website up?](https://img.shields.io/website-up-down-green-red/http/rmorabia.com/alia.svg?label=is+the+website+up?&style=for-the-badge) ![license](https://img.shields.io/github/license/rmorabia/alia.svg?style=for-the-badge) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/rmorabia/alia.svg?style=for-the-badge) ![GitHub last commit](https://img.shields.io/github/last-commit/rmorabia/alia.svg?style=for-the-badge)
 
 ![](alia.gif)
 
